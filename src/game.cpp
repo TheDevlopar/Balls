@@ -10,12 +10,19 @@ void::Game::run(){
     
         BeginDrawing();
         ClearBackground(backgroundColor);
-        DrawRingLines(circle.pos, circle.innerRadius, circle.outerRadius,  circle.startAngle, circle.endAngle, circle.segments, WHITE);
-        DrawCircle(ball.getPosX(), ball.getPosY(), ball.getRadius(), WHITE);
-        DrawCircleLines(ball.getPosX(), ball.getPosY(), ball.getRadius(), BLACK);
+
+        DrawRingLines(circle.pos, circle.innerRadius, circle.outerRadius,  circle.startAngle, circle.endAngle, circle.segments, WHITE); // Outer Circle 
+        DrawCircle(ball.getPosX(), ball.getPosY(), ball.getRadius(), WHITE); // Inner Balls
+        DrawCircleLines(ball.getPosX(), ball.getPosY(), ball.getRadius(), BLACK); // Outline
+
         ball.move(dx, dy);
-        if(circle.pos.x + circle.pos.y + circle.innerRadius - ball.getPosX() + ball.getPosY() + ball.getRadius() >= 900 || circle.pos.x + circle.pos.y + circle.innerRadius - ball.getPosX() + ball.getPosY() + ball.getRadius() <= 150){
-            std::cout << "Collision Detected!!! \n";
+        float disx = ball.getPosX() - circle.pos.x;
+        float disy = ball.getPosY() - circle.pos.y;
+
+        distance = disx * disx + disy * disy;
+        float allowed = circle.innerRadius - ball.getRadius();
+
+        if (distance >= allowed * allowed) {
             dx = -dx;
             dy = -dy;
         }

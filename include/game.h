@@ -16,8 +16,9 @@ class Game{
         };
         bool running = true;
         Color backgroundColor = {15, 18, 32, 255};
-        int dx = 0;
-        int dy = 5;
+        float dx = 1;
+        float dy = 1;
+        float distance = 0.0f;
         Ball ball;
     public:
     void run();

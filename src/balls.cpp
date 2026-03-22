@@ -9,7 +9,7 @@ int::Ball::getPosY(){
 int::Ball::getRadius(){
     return radius;
 }
-void::Ball::move(int dx, int dy){
+void::Ball::move(float dx, float dy){
     posX += dx;
     posY += dy;
 }

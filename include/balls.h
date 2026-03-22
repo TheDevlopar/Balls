@@ -2,12 +2,12 @@
 
 class Ball{
     private: 
-        int radius = 10;
-        int posX = 450;
-        int posY = 300;
+        float radius = 10.0f;
+        float posX = 450.0f;
+        float posY = 300.0f;
     public:
         int getPosX();
         int getPosY();
         int getRadius();
-        void move(int dx, int dy);
+        void move(float dx, float dy);
 };
